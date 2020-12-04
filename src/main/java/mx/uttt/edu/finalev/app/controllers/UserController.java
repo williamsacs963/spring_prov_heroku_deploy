@@ -68,5 +68,6 @@ public class UserController {
 		return "redirect:/login";
 		
 	}
+	//Un comentario de relleno xd
 	
 }
