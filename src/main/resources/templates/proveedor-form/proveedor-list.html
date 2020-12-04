@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<title th:text="${title}"></title>	
+</head>
+<body>
+
+	<div th:include="master-page"></div>
+	
+	<div class="container">
+		<br>
+		<h1 class="text-primary" th:text="${title}"></h1>
+		
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Compañia</th>
+					<th>Nombre Contato</th>
+					<th>Telefono</th>
+					<th>Correo</th>
+					<th>Editar</th>
+					<th>Eliminar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="sclt:${lprov}">
+					<td th:text="${sclt.id}"></td>
+					<td th:text="${sclt.nombreCompania}"></td>
+					<td th:text="${sclt.nombreContacto}"></td>
+					<td th:text="${sclt.telefono}"></td>
+					<td th:text="${sclt.correoElectronico}"></td>
+					<td>
+						<a th:href="@{/proveedorform/} + ${sclt.id}" type="submit" th:text="'Editar'" class="btn btn-sm btn-primary"></a>
+					</td>
+					<td>
+						<a th:href="@{/deleteprov/} + ${sclt.id}" th:text="'Eliminar'" class="btn btn-sm btn-danger"></a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	
+	</div>
+
+</body>

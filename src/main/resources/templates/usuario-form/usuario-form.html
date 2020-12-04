@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title th:text="${title}"></title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+<body>
+
+	<div th:if="${editact != null}">
+	
+		<div th:include="master-page"></div>
+	
+	</div>
+	
+	<div class="container">
+		
+		<br/>
+		
+		<div class="row">
+			
+			<div class="col-lg-6 col-md-8 col-sm-8 offset-md-3 offset-lg-3">
+				
+						
+				<form th:action="@{/usreg}" th:object="${objuser}" method="POST">
+					
+					<div class="card">
+						<div class="card-header">
+							<h4 th:text="${title}"></h4>
+						</div>
+						<div class="card-body">
+							<div class="alert alert-danger text-center" th:if="${formErrorMessage}" th:text="${formErrorMessage}">Error MEssage</div>
+							<div class="form-group">
+								<label for="username">Nombre de usuario</label> 
+								<br/>
+								<input
+									name="username" th:field="*{username}" type="text"
+									class="form-control" required="required"
+									th:errorclass="'form-control alert-danger'"> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('username')}"
+									th:errors="*{username}"></small>
+							</div>
+							
+									
+							<div class="form-group">
+								<label for="email">Correo</label> 
+								<br/>
+								<input
+									name="email" th:field="*{email}" type="text"
+									class="form-control" required="required"
+									th:errorclass="'form-control alert-danger'"> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('email')}"
+									th:errors="*{email}"></small>
+							</div>
+							
+									
+							<div class="form-group">
+								<label for="password">Contraseña</label> 
+								<br/>
+								<input
+									name="password" th:field="*{password}" type="password"
+									class="form-control" required="required"
+									th:errorclass="'form-control alert-danger'"
+									pattern="^(?=.*\\d)(?=.*[\\u0021-\\u002b\\u003c-\\u0040])(?=.*[A-Z])(?=.*[a-z])\\S{8,16}$"
+									title="Debe contener entre 8-16 caracteres (entre numero, mayusculas, minusculas y simbolos"> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('password')}"
+									th:errors="*{password}"></small>
+							</div>
+							
+									
+							<div class="form-group">
+								<label for="confirmPassword">Confirmar contraseña</label> 
+								<br/>
+								<input
+									name="confirmPassword" th:field="*{confirmPassword}" type="password"
+									class="form-control" required="required"
+									th:errorclass="'form-control alert-danger'"> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('confirmPassword')}"
+									th:errors="*{confirmPassword}"></small>
+							</div>
+						
+						</div>
+						<div class="card-footer">
+							<input type="submit" class="btn btn-sm btn-primary float-right" th:value="${nameact}">
+							<a class="btn btn-sm btn-warning" th:href="@{/login}" >Cancelar</a>
+						</div>
+					</div>
+				
+				</form>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+
+</body>
+</html>

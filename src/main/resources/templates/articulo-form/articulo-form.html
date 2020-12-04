@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+<body>
+
+	<div th:include="master-page"></div>
+
+	<div class="container">
+
+		<br/>
+		
+		<div class="row">
+			<div class="col-lg-6 col-md-8 col-sm-8 offset-md-3 offset-lg-3">
+				<form th:action="@{/articuloform}" th:object="${objart}" method="POST">
+	
+				<input type="text" hidden="hidden" th:field="*{id}">
+	
+				<div class="card">
+					<div class="card-header">
+						<h4 th:text="${title}"></h4>
+					</div>
+					<div class="card-body">
+						<div class="form-row">
+	
+							<div class="col">
+	
+								<label for="nombre">Nombre producto</label> 
+								<br/>
+								<input
+									name="nombre" th:field="*{nombre}" type="text"
+									class="form-control"
+									th:errorclass="'form-control alert-danger'"> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('nombre')}"
+									th:errors="*{nombre}"></small>
+							</div>
+	
+							<div class="col">
+								<label for="cantidadPorUnidad">Cantidad por unidad</label> <input
+									name=" cantidadPorUnidad" th:field="*{cantidadPorUnidad}" type="number"
+									class="form-control" required="required"
+									th:errorclass="'form-control alert-danger'"> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('cantidadPorUnidad')}"
+									th:errors="*{cantidadPorUnidad}"></small>
+							</div>
+	
+						</div>
+						
+						<div class="form-row">
+	
+							<div class="col">
+	
+								<label for="unidadesEnStock">Stock</label> 
+								<br/>
+								<input
+									name="unidadesEnStock" th:field="*{unidadesEnStock}" type="number"
+									class="form-control" required="required"
+									th:errorclass="'form-control alert-danger'"> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('unidadesEnStock')}"
+									th:errors="*{unidadesEnStock}"></small>
+							</div>
+	
+							<div class="col">
+								<label for="unidadesOrdenadas">Unidades ordenadas</label> <input
+									name="unidadesOrdenadas" th:field="*{unidadesOrdenadas}" type="number"
+									class="form-control" required="required"
+									th:errorclass="'form-control alert-danger'"> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('unidadesOrdenadas')}"
+									th:errors="*{unidadesOrdenadas}"></small>
+							</div>
+	
+						</div>
+	
+						<div class="form-row">
+	
+							<div class="col">
+	
+								<label for="nivelOrdenamiento">Nivel ordenamiento</label> <br />
+								<input name="nivelOrdenamiento" th:field="*{nivelOrdenamiento}"
+									type="number" class="form-control" required="required"
+									th:errorclass="'form-control alert-danger'"> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('nivelOrdenamiento')}"
+									th:errors="*{nivelOrdenamiento}"></small>
+							</div>
+	
+							<div class="col">
+								<label>Descontinuado</label>
+								<br>
+								<label> 
+									<input type="radio" name="descotinuado" th:field="*{descotinuado}" th:value="1">Si
+								</label> 
+								<label> 
+									<input type="radio" name="descotinuado" th:field="*{descotinuado}" th:value="0">No
+								</label>
+								<small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('descotinuado')}"
+									th:errors="*{descotinuado}"></small>
+							</div>
+	
+						</div>
+						
+						<div class="form-row">
+	
+							<div class="col">
+	
+								<label for="margenUtilidad">Margen utilidad</label> 
+								<br/>
+								<input
+									name="margenUtilidad" th:field="*{margenUtilidad}" type="number"
+									class="form-control" required="required"
+									th:errorclass="'form-control alert-danger'"> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('margenUtilidad')}"
+									th:errors="*{margenUtilidad}"></small>
+							</div>
+	
+							<div class="col">
+								<label for="precioMayoreo">Precio mayoreo</label> <input
+									name="precioMayoreo" th:field="*{precioMayoreo}" type="number"
+									class="form-control" required="required"
+									th:errorclass="'form-control alert-danger'"> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('precioMayoreo')}"
+									th:errors="*{precioMayoreo}"></small>
+							</div>
+	
+						</div>
+						
+						<div class="form-row">
+	
+							<div class="col">
+	
+								<label for="numSku">Num Sku</label> 
+								<br/>
+								<input
+									name="numSku" th:field="*{numSku}" type="number"
+									class="form-control" required="required"
+									th:errorclass="'form-control alert-danger'"> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('numSku')}"
+									th:errors="*{numSku}"></small>
+							</div>
+	
+							<div class="col">
+								<label for="unidadMedida">Unidad medida</label> <input
+									name="unidadMedida" th:field="*{unidadMedida}" type="text"
+									class="form-control" required="required"
+									th:errorclass="'form-control alert-danger'"> <small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('unidadMedida')}"
+									th:errors="*{unidadMedida}"></small>
+							</div>
+	
+						</div>
+						
+						<div class="form-row">
+							
+							<div class="col">
+	
+								<label for="proveedor">Seleccione el proveedor</label> 
+								
+								<select th:field="*{id_proveedor}" class="form-control">
+									<option th:each="sprov:${lprov}"  th:text="${sprov.nombreCompania}" th:value="${sprov.id}"></option>
+								</select>
+								<small
+									class="form-text text-danger"
+									th:if="${#fields.hasErrors('id_proveedor')}"
+									th:errors="*{id_proveedor}"></small>
+							</div>
+						
+						</div>
+						
+					</div>
+					<div class="card-footer">
+						<a class="btn btn-sm btn-warning" th:href="@{/articulos}">Cancelar</a>
+						<input type="submit" class="btn btn-sm btn-primary float-right" th:value="${nameact}">
+					</div>
+				</div>
+	
+			</form>
+			</div>
+		</div>
+
+	</div>
+	
+</body>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title th:text="${title}"></title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+<body>
+
+	<div th:include="master-page"></div>
+
+	<div class="container">
+
+		<br/>
+		
+		<div class="row">
+			<div class="col-lg-6 col-md-8 col-sm-8 offset-md-3 offset-lg-3">
+				
+						
+				<form th:action="@{/proveedorform}" th:object="${objprov}" method="POST">
+		
+					<input type="text" hidden="hidden" th:field="*{id}">
+		
+					<div class="card">
+						<div class="card-header">
+							<h4 th:text="${title}"></h4>
+						</div>
+						<div class="card-body">
+							<div class="form-row">
+		
+								<div class="col">
+								
+									<div class="md-form">
+										<label for="nombreCompania">Compañia</label> 
+										<br/>
+										<input
+											name="nombreCompania" th:field="*{nombreCompania}" type="text"
+											class="form-control" required="required"
+											th:errorclass="'form-control alert-danger'"> <small
+											class="form-text text-danger"
+											th:if="${#fields.hasErrors('nombreCompania')}"
+											th:errors="*{nombreCompania}"></small>
+									</div>
+									
+								</div>
+		
+								<div class="col">
+									<label for="nombreContacto">Nombre Contacto</label> <input
+										name="nombreContacto" th:field="*{nombreContacto}" type="text"
+										class="form-control" required="required"
+										th:errorclass="'form-control alert-danger'"> <small
+										class="form-text text-danger"
+										th:if="${#fields.hasErrors('nombreContacto')}"
+										th:errors="*{nombreContacto}"></small>
+								</div>
+		
+							</div>
+							
+							<div class="form-row">
+		
+								<div class="col">
+		
+									<label for="nombreCompania">Titulo de contacto</label> 
+									<br/>
+									<input
+										name="tituloContacto" th:field="*{tituloContacto}" type="text"
+										class="form-control" required="required"
+										th:errorclass="'form-control alert-danger'"> <small
+										class="form-text text-danger"
+										th:if="${#fields.hasErrors('tituloContacto')}"
+										th:errors="*{tituloContacto}"></small>
+								</div>
+		
+								<div class="col">
+									<label for="direccion">direccion</label> <input
+										name="direccion" th:field="*{direccion}" type="text"
+										class="form-control" required="required"
+										th:errorclass="'form-control alert-danger'"> <small
+										class="form-text text-danger"
+										th:if="${#fields.hasErrors('direccion')}"
+										th:errors="*{direccion}"></small>
+								</div>
+		
+							</div>
+							
+							<div class="form-row">
+		
+								<div class="col">
+		
+									<label for="ciudad">Ciudad</label> 
+									<br/>
+									<input
+										name="ciudad" th:field="*{ciudad}" type="text"
+										class="form-control" required="required"
+										th:errorclass="'form-control alert-danger'"> <small
+										class="form-text text-danger"
+										th:if="${#fields.hasErrors('ciudad')}"
+										th:errors="*{ciudad}"></small>
+								</div>
+		
+								<div class="col">
+									<label for="telefono">Telefono</label> <input
+										name="telefono" th:field="*{telefono}" type="text"
+										class="form-control" required="required"
+										th:errorclass="'form-control alert-danger'"> <small
+										class="form-text text-danger"
+										th:if="${#fields.hasErrors('telefono')}"
+										th:errors="*{telefono}"></small>
+								</div>
+		
+							</div>
+							
+							<div class="form-row">
+		
+								<div class="col">
+		
+									<label for="fax">Fax</label> 
+									<br/>
+									<input
+										name="fax" th:field="*{fax}" type="text"
+										class="form-control" required="required"
+										th:errorclass="'form-control alert-danger'"> <small
+										class="form-text text-danger"
+										th:if="${#fields.hasErrors('fax')}"
+										th:errors="*{fax}"></small>
+								</div>
+		
+								<div class="col">
+									<label for="sitioWeb">Sitio Web</label> <input
+										name="sitioWeb" th:field="*{sitioWeb}" type="text"
+										class="form-control" required="required"
+										th:errorclass="'form-control alert-danger'"> <small
+										class="form-text text-danger"
+										th:if="${#fields.hasErrors('sitioWeb')}"
+										th:errors="*{sitioWeb}"></small>
+								</div>
+		
+							</div>
+							
+							<div class="form-row">
+		
+								<div class="col">
+		
+									<label for="facebook">facebook</label> 
+									<br/>
+									<input
+										name="facebook" th:field="*{facebook}" type="text"
+										class="form-control" required="required"
+										th:errorclass="'form-control alert-danger'"> <small
+										class="form-text text-danger"
+										th:if="${#fields.hasErrors('facebook')}"
+										th:errors="*{facebook}"></small>
+								</div>
+		
+								<div class="col">
+									<label for="twitter">twitter</label> <input
+										name="twitter" th:field="*{twitter}" type="text"
+										class="form-control" required="required"
+										th:errorclass="'form-control alert-danger'"> <small
+										class="form-text text-danger"
+										th:if="${#fields.hasErrors('twitter')}"
+										th:errors="*{twitter}"></small>
+								</div>
+		
+							</div>
+							
+							<div class="form-row">
+		
+								<div class="col">
+		
+									<label for="correoElectronico">Correo</label> 
+									<br/>
+									<input
+										name="correoElectronico" th:field="*{correoElectronico}" type="text"
+										class="form-control" required="required"
+										th:errorclass="'form-control alert-danger'"> <small
+										class="form-text text-danger"
+										th:if="${#fields.hasErrors('correoElectronico')}"
+										th:errors="*{correoElectronico}"></small>
+								</div>
+							</div>
+		
+						</div>
+						<div class="card-footer">
+							<a class="btn btn-sm btn-warning" th:href="@{/proveedores}">Cancelar</a>
+							<input type="submit" class="btn btn-sm btn-primary float-right" th:value="${nameact}">
+						</div>
+					</div>
+		
+				</form>
+							
+				
+			</div>
+		</div>
+
+	</div>
+
+</body>
