@@ -3,6 +3,7 @@ package mx.uttt.edu.finalev.app.controllers;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,6 +24,7 @@ import mx.uttt.edu.finalev.app.models.Usuario;
 public class UserController {
 
 	@Autowired
+	@Lazy
 	IUsuarioDao usuarioDao;
 	
 	@GetMapping({"","/","/login","*"})
