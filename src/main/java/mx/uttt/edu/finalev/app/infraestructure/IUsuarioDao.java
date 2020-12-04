@@ -3,12 +3,10 @@ package mx.uttt.edu.finalev.app.infraestructure;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.context.annotation.RequestScope;
 
 import mx.uttt.edu.finalev.app.models.Usuario;
 
 @Service
-@RequestScope
 public interface IUsuarioDao {
 
 	public List<Usuario> getAllUsuarios();

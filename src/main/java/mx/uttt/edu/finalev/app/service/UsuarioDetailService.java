@@ -13,8 +13,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import mx.uttt.edu.finalev.app.infraestructure.IUsuarioDao;
 import mx.uttt.edu.finalev.app.models.Usuario;
+import mx.uttt.edu.finalev.app.repository.UsuarioDaoImpl;
 
 
 @Service
@@ -22,7 +22,7 @@ import mx.uttt.edu.finalev.app.models.Usuario;
 public class UsuarioDetailService implements UserDetailsService{
 
 	@Autowired
-	IUsuarioDao usuarioDao;
+	UsuarioDaoImpl usuarioDao;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
